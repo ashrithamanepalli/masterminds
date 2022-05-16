@@ -1,5 +1,5 @@
 const fs = require('fs');
-const generateTags = require('../generateTags.js');
+const generateTags = require('./generateTags.js');
 const generateTag = generateTags.generateTag;
 const generateSelfCloseTag = generateTags.generateSelfCloseTag;
 
