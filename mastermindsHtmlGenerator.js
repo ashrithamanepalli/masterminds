@@ -30,7 +30,7 @@ const getClueDivs = function (roundInfo) {
   const colorDivs = roundInfo.colorMatched.map(getColorDivs).join('');
 
   const remaining = roundInfo.actualCode.length -
-    (roundInfo.positionMatched.concat(roundInfo.colorMatched)).length;
+    roundInfo.positionMatched.concat(roundInfo.colorMatched).length;
 
   const emptyDivs = Array(remaining).fill('0').map(getEmptyDivs).join('');
 
