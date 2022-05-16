@@ -2,7 +2,7 @@ function main () {
   local chances=0
   local result='false'
 
-  while [[ $chances -lt 6 && $(grep 'false' <<< "$result") ]]
+  while [[ $chances -lt 6 && $result == 'false' ]]
   do
     chances=$(($chances + 1))
     read -p "Enter the code : " code
@@ -12,7 +12,7 @@ function main () {
   done
 
   local message='You lose'
-  if [[ $(grep 'true' <<< "$result") ]]
+  if [[ 'true' == "$result" ]]
   then
     message='You won'
   fi
