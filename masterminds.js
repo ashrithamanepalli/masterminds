@@ -1,21 +1,16 @@
 const fs = require('fs');
 const roundInit = require('./mastermindsObjects').template;
 
-const isNumberExists = function (number, digit) {
+const doesNumberExists = function (number, digit) {
   return number.join('').includes(digit);
 };
 
-// const isIndexPresent = function (roundInfo, index) {
-//   return !checkIfNumberExists(roundInfo.positionMatched
-//     .concat(roundInfo.colorMatched), index);
-// };
-
 const isIndexPresent = function (roundInfo, index) {
-  return isNumberExists(roundInfo.positionMatched, index);
+  return doesNumberExists(roundInfo.positionMatched, index);
 };
 
 const isCodePresent = function (roundInfo, index) {
-  return isNumberExists(roundInfo.actualCode, roundInfo.guessedCode[index]);
+  return doesNumberExists(roundInfo.actualCode, roundInfo.guessedCode[index]);
 };
 
 const checkPartialMatch = function (roundInfo) {
@@ -76,6 +71,7 @@ const masterminds = function (roundInit) {
   allRoundsInfo.push(roundInfo);
 
   fs.writeFileSync('./masterminds.json', JSON.stringify(allRoundsInfo), 'utf8');
+  return allRoundsInfo;
 };
 
 masterminds(roundInit);
