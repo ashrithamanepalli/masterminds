@@ -8,7 +8,7 @@ function main () {
     read -p "Enter the code : " code
     result=$(node masterminds.js $code)
     node mastermindsHtmlGenerator.js
-    open masterminds.html
+    # open masterminds.html
   done
 
   local message='You lose'

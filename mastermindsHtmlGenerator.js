@@ -55,13 +55,15 @@ const generateBody = function (allRoundsInfo) {
 };
 
 const generateHead = function () {
+  const meta = generateSelfCloseTag('meta',
+    [{ attr: 'http-equiv', value: 'refresh' }, { attr: 'content', value: 2 }]);
   const title = generateTag('title', 'Masterminds');
   const link = generateSelfCloseTag('link',
     [
       { attr: 'rel', value: 'stylesheet' },
       { attr: 'href', value: './styles.css' }
     ]);
-  return title + link;
+  return meta + title + link;
 };
 
 const generateMasterminds = function (allRoundsInfo) {
