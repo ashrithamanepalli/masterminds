@@ -60,9 +60,25 @@ const updateRoundDets = function (allRoundsInfo, roundInfo, guessedCode) {
   return roundInfo;
 };
 
+const readFile = function (fileName) {
+  try {
+    return fs.readFileSync(fileName, 'utf8');
+  } catch (error) {
+    throw error.message;
+  }
+};
+
+const writeFile = function (fileName, content) {
+  try {
+    return fs.writeFileSync(fileName, content, 'utf8');
+  } catch (error) {
+    throw error.message;
+  }
+};
+
 const masterminds = function (roundInit) {
   const allRoundsInfo =
-    JSON.parse(fs.readFileSync('./masterminds.json', 'utf8'));
+    JSON.parse(readFile('./masterminds.json'));
 
   let roundInfo = roundInit;
   const guessedCode = process.argv.slice(2);
@@ -70,7 +86,7 @@ const masterminds = function (roundInit) {
   console.log(roundInfo.isMatched);
   allRoundsInfo.push(roundInfo);
 
-  fs.writeFileSync('./masterminds.json', JSON.stringify(allRoundsInfo), 'utf8');
+  writeFile('./masterminds.json', JSON.stringify(allRoundsInfo));
   return allRoundsInfo;
 };
 
