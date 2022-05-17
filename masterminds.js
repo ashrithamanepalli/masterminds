@@ -1,9 +1,7 @@
 const fs = require('fs');
 const roundInit = require('./mastermindsObjects').template;
 
-const doesNumberExists = function (number, digit) {
-  return number.join('').includes(digit);
-};
+const doesNumberExists = (number, digit) => number.join('').includes(digit);
 
 const isIndexPresent = function (roundInfo, index) {
   return doesNumberExists(roundInfo.positionMatched, index);
